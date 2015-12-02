@@ -1,5 +1,6 @@
 package net.prasenjit.admin.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -18,6 +19,9 @@ public class AdminDemoServiceApplication {
 		SpringApplication.run(AdminDemoServiceApplication.class, args);
 	}
 
+	@Autowired
+	private ConfigBean configBean;
+
 	@RequestMapping
 	public String home() {
 		log.trace("a trace message");
@@ -25,6 +29,6 @@ public class AdminDemoServiceApplication {
 		log.info("a info message");
 		log.warn("a warn message");
 		log.error("a error message");
-		return "Hello Service";
+		return "Hello Service " + configBean.getProperty();
 	}
 }
