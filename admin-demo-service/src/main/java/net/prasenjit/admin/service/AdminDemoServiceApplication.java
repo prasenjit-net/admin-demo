@@ -22,7 +22,7 @@ public class AdminDemoServiceApplication {
 	@Autowired
 	private ConfigBean configBean;
 
-	@RequestMapping
+	@RequestMapping("/")
 	public String home() {
 		log.trace("a trace message");
 		log.debug("a debug message");
