@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class Person {
 	@NotNull
-	private Integer id;
+	private String id;
 	private String firstname;
 	@NotEmpty
 	private String lastname;

@@ -36,7 +36,7 @@ public class PersonController {
 			@Override
 			public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Person p = new Person();
-				p.setId(rs.getInt("id"));
+				p.setId(rs.getString("id"));
 				p.setFirstname(rs.getString("firstname"));
 				p.setLastname(rs.getString("lastname"));
 				return p;
@@ -51,7 +51,7 @@ public class PersonController {
 		jdbcTemplate.update("delete from person where id = ?", new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
-				ps.setInt(1, person.getId());
+				ps.setString(1, person.getId());
 			}
 		});
 		jdbcTemplate.update("insert into person(id, firstname, lastname) values (?,?,?)",
@@ -59,7 +59,7 @@ public class PersonController {
 
 					@Override
 					public void setValues(PreparedStatement ps) throws SQLException {
-						ps.setInt(1, person.getId());
+						ps.setString(1, person.getId());
 						ps.setString(2, person.getFirstname());
 						ps.setString(3, person.getLastname());
 					}
@@ -72,7 +72,7 @@ public class PersonController {
 					public Person extractData(ResultSet rs) throws SQLException, DataAccessException {
 						if (rs.next()) {
 							Person p = new Person();
-							p.setId(rs.getInt("id"));
+							p.setId(rs.getString("id"));
 							p.setFirstname(rs.getString("firstname"));
 							p.setLastname(rs.getString("lastname"));
 							return p;
@@ -86,11 +86,11 @@ public class PersonController {
 
 	@Transactional
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") Integer id) {
+	public void delete(@PathVariable("id") String id) {
 		jdbcTemplate.update("delete from person where id = ?", new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
-				ps.setInt(1, id);
+				ps.setString(1, id);
 			}
 		});
 	}
