@@ -1,4 +1,5 @@
 <configuration>
+    <property name="LOG_LEVEL_PATTERN" value="%5p [trace=%X{X-Trace-Id:-},span=%X{X-Span-Id:-}]"/>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <jmxConfigurator/>
 </configuration>

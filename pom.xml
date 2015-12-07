@@ -28,6 +28,7 @@
         <module>admin-demo-server</module>
         <module>admin-demo-service</module>
 		<module>admin-demo-eureka</module>
+        <module>admin-demo-zuul</module>
     </modules>
 
     <dependencyManagement>

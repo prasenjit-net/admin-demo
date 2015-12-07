@@ -1,24 +1,24 @@
-package net.prasenjit.admin.server;
+package net.prasenjit.admin.zuul;
 
-import de.codecentric.boot.admin.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.sleuth.Sampler;
 import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@EnableAdminServer
+@EnableZuulProxy
 @EnableDiscoveryClient
-public class AdminDemoServerApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(AdminDemoServerApplication.class, args);
-    }
+public class AdminDemoZuulApplication {
 
     @Bean
     public Sampler<Void> sampler(){
         return new AlwaysSampler();
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(AdminDemoZuulApplication.class, args);
     }
 }
